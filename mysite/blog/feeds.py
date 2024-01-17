@@ -1,5 +1,5 @@
 import markdown
-from django.contrib.syndication.views import feed 
+from django.contrib.syndication.views import Feed 
 from django.template.defaultfilters import truncatewords_html
 from django.urls import reverse_lazy
 from .models import Post 
@@ -10,7 +10,7 @@ class LatestPostsFeed(Feed):
     link = reverse_lazy('blog:post_list')
     description = 'new posts of my blog.'
 
-    def iteams(self)
+    def iteams(self):
         return Post.published.all()[:5]
     
     def iteam_title(self, iteam):
